@@ -10,6 +10,10 @@ library PriceConverter {
     ) internal view returns (uint256) {
         (, int256 price, , , ) = _priceFeed.latestRoundData();
 
+        require(price > 0, "Invalid price");
+
+        // casting to 'uint256' is safe because [explain why]
+        // forge-lint: disable-next-line(unsafe-typecast)
         return uint256(price) * 1e10;
     }
 

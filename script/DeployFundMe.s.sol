@@ -17,4 +17,3 @@ contract DeployFundMe is Script {
         return fundMe;
     }
 }
-// test

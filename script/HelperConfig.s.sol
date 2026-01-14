@@ -4,7 +4,7 @@ pragma solidity 0.8.31;
 
 import {Script} from "forge-std/Script.sol";
 
-contract HelperConfig {
+contract HelperConfig is Script {
     //
 
     NetworkConfig public activeNetworkConfig;

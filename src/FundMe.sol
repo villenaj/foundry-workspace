@@ -13,11 +13,11 @@ contract FundMe {
     uint256 public constant MINIMUM_USD = 5e18;
     address[] public funders;
     mapping(address funders => uint256 amount) public listOfFunders;
-    address public immutable i_owner;
+    address public immutable I_OWNER;
     AggregatorV3Interface priceFeed;
 
     constructor(address _priceFeed) {
-        i_owner = msg.sender;
+        I_OWNER = msg.sender;
         priceFeed = AggregatorV3Interface(_priceFeed);
     }
 
@@ -60,9 +60,12 @@ contract FundMe {
     }
 
     modifier onlyOwner() {
-        // require(msg.sender == i_owner, "Not owner");
-        if (msg.sender != i_owner) revert NotOwner();
+        _onlyOwner();
         _;
+    }
+
+    function _onlyOwner() internal view {
+        if (msg.sender != I_OWNER) revert NotOwner();
     }
 
     receive() external payable {

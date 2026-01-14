@@ -21,7 +21,7 @@ contract FundMeTest is Test {
     }
 
     function testOwnerIsMsgSender() public view {
-        assertEq(fundMe.i_owner(), msg.sender);
+        assertEq(fundMe.I_OWNER(), msg.sender);
     }
 
     function testPriceFeedVersion() public view {
